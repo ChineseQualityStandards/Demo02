@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Resourses\Images\MD4XAML.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="9.0.537" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo02.Core\Demo02.Core.csproj" />
+    <ProjectReference Include="..\Modules\Demo02.Modules.ModuleName\Demo02.Modules.ModuleName.csproj" />
+    <ProjectReference Include="..\Services\Demo02.Services.Interfaces\Demo02.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\Services\Demo02.Services\Demo02.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\MD4XAML.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+</Project>
