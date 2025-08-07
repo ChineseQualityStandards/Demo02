@@ -42,7 +42,7 @@ namespace Demo02.Modules.ModuleName.ViewModels
             {
                 new NavItem { Title = "首页", Parameter = "HomeView" },
                 new NavItem { Title = "书架", Parameter = "BookShelfView" },
-                new NavItem { Title = "内容", Parameter = "ViewA" }
+                new NavItem { Title = "内容", Parameter = "BookContentView" }
             };
 
         #endregion

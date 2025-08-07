@@ -12,50 +12,63 @@
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <!--  书本封面的模板  -->
+        <DataTemplate x:Key="BookCoverTemplate">
+            <materialDesign:Card
+                Width="133"
+                Height="193"
+                Margin="15"
+                Padding="1"
+                materialDesign:ElevationAssist.Elevation="Dp24"
+                Background="{Binding CoverColor}"
+                Opacity="0.8">
+                <Button
+                    Width="133"
+                    Height="193"
+                    Style="{DynamicResource MaterialDesignNumericUpDownButtonsStyle}">
+                    <Button.Content>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                FontFamily="Source Han Serif SC Heavy"
+                                FontSize="16"
+                                FontWeight="DemiBold"
+                                Foreground="{Binding Foreground}"
+                                Text="{Binding Title}"
+                                TextWrapping="Wrap"
+                                ToolTip="{Binding Title}" />
+                            <Separator Grid.Row="1" />
+                            <DockPanel Grid.Row="2" LastChildFill="False">
+                                <TextBlock
+                                    DockPanel.Dock="Right"
+                                    FontFamily="KaiTi"
+                                    Foreground="{Binding Foreground}"
+                                    Text="  著"
+                                    TextWrapping="Wrap" />
+                                <TextBlock
+                                    DockPanel.Dock="Right"
+                                    FontFamily="KaiTi"
+                                    Foreground="{Binding Foreground}"
+                                    Text="{Binding Author}"
+                                    TextWrapping="Wrap" />
+                            </DockPanel>
 
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </materialDesign:Card>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
         <ScrollViewer Style="{DynamicResource MaterialDesignScrollViewer}">
-            <WrapPanel>
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="Gray"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="White"
-                            Text="C#学习与自我修养(进阶版)"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="C#学习与自我修养(进阶版)" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="White"
-                            Text="蔺太微 著"
-                            TextWrapping="Wrap" />
-                    </Grid>
-                </materialDesign:Card>
 
-                <materialDesign:Card
+
+            <!--<materialDesign:Card
                     Width="133"
                     Height="193"
                     Margin="15"
@@ -63,558 +76,54 @@
                     materialDesign:ElevationAssist.Elevation="Dp24"
                     Background="Orange"
                     Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text=".Net从入门到入土"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip=".Net从入门到入土" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="哼唧GG 著"
-                            TextWrapping="Wrap" />
+                    <Button
+                        Width="133"
+                        Height="193"
+                        Style="{DynamicResource MaterialDesignNumericUpDownButtonsStyle}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    FontFamily="Source Han Serif SC Heavy"
+                                    FontSize="16"
+                                    FontWeight="DemiBold"
+                                    Foreground="White"
+                                    Text=".Net从入门到入土"
+                                    TextWrapping="Wrap"
+                                    ToolTip=".Net从入门到入土" />
+                                <Separator Grid.Row="1" />
+                                <DockPanel Grid.Row="2" LastChildFill="False">
+                                    <TextBlock
+                                        DockPanel.Dock="Right"
+                                        FontFamily="KaiTi"
+                                        Foreground="White"
+                                        Text="  著"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock
+                                        DockPanel.Dock="Right"
+                                        FontFamily="KaiTi"
+                                        Foreground="White"
+                                        Text="蔺太微"
+                                        TextWrapping="Wrap" />
+                                </DockPanel>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </materialDesign:Card>-->
 
-                    </Grid>
-                </materialDesign:Card>
+            <ItemsControl ItemTemplate="{StaticResource BookCoverTemplate}" ItemsSource="{Binding BookList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
 
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
 
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="Orange"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text=".Net从入门到入土"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip=".Net从入门到入土" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="哼唧GG 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="Orange"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text=".Net从入门到入土"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip=".Net从入门到入土" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="哼唧GG 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="Orange"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text=".Net从入门到入土"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip=".Net从入门到入土" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="哼唧GG 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="Orange"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text=".Net从入门到入土"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip=".Net从入门到入土" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="哼唧GG 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card
-                    Width="133"
-                    Height="193"
-                    Margin="15"
-                    Padding="1"
-                    materialDesign:ElevationAssist.Elevation="Dp24"
-                    Background="LightPink"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Width="123"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Source Han Serif SC Heavy"
-                            FontSize="16"
-                            FontWeight="DemiBold"
-                            Foreground="Black"
-                            Text="我真的不会上位机"
-                            TextWrapping="WrapWithOverflow"
-                            ToolTip="我真的不会上位机" />
-                        <Separator Grid.Row="1" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Margin="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontFamily="KaiTi"
-                            Foreground="Black"
-                            Text="诗三百 著"
-                            TextWrapping="Wrap" />
-
-                    </Grid>
-                </materialDesign:Card>
-            </WrapPanel>
         </ScrollViewer>
     </Grid>
 </UserControl>

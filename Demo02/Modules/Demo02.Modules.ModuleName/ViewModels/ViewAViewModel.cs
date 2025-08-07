@@ -1,5 +1,5 @@
 ﻿using Demo02.Core.Mvvm;
-using Demo02.Services.Interfaces;
+using Demo02.Interfaces;
 using Prism.Navigation.Regions;
 
 namespace Demo02.Modules.ModuleName.ViewModels

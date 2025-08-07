@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Demo02.Modules.ModuleName;
 using Demo02.Services;
-using Demo02.Services.Interfaces;
+using Demo02.Interfaces;
 using Demo02.Views;
 using Prism.Dialogs;
 using Prism.Ioc;
@@ -36,6 +36,7 @@ namespace Demo02
         /// <exception cref="NotImplementedException">注册容器</exception>
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            
             containerRegistry.RegisterSingleton<IMessageService, MessageService>();
         }
 

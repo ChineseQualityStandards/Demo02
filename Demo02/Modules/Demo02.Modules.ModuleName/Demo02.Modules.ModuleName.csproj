@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.7" />
+    <PackageReference Include="Markdown.Avalonia" Version="11.0.2" />
     <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
     <PackageReference Include="MaterialDesignThemes.MahApps" Version="5.2.1" />
@@ -12,6 +13,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Demo02.Core\Demo02.Core.csproj" />
-    <ProjectReference Include="..\..\Services\Demo02.Services.Interfaces\Demo02.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Services\Demo02.Services\Demo02.Services.csproj" />
   </ItemGroup>
 </Project>

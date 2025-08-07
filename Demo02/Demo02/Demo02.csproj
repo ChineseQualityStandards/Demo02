@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
@@ -13,8 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Demo02.Core\Demo02.Core.csproj" />
     <ProjectReference Include="..\Modules\Demo02.Modules.ModuleName\Demo02.Modules.ModuleName.csproj" />
-    <ProjectReference Include="..\Services\Demo02.Services.Interfaces\Demo02.Services.Interfaces.csproj" />
-    <ProjectReference Include="..\Services\Demo02.Services\Demo02.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Images\MD4XAML.jpg">
