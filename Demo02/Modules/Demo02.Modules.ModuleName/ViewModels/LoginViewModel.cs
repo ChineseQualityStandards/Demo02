@@ -74,8 +74,15 @@ namespace Demo02.Modules.ModuleName.ViewModels
                 {
                     if(Account.Equals("1") && box.Password.Equals("1"))
                     {
-                        new MainWindow().Show();
-                        Application.Current.MainWindow.Close();
+                        // LoginWindow区域管理权限要转移给MainWindow
+                        var loginWindow = Application.Current.MainWindow;
+                        var mainWindow = _container.Resolve<MainWindow>();
+                        // 让新打开的窗口成为程序的MainWindow
+                        Application.Current.MainWindow = mainWindow;
+                        Prism.Navigation.Regions.RegionManager.SetRegionManager(mainWindow,_regionManager);
+                        
+                        loginWindow.Close();
+                        mainWindow.Show();
                     }
                     else
                     {

@@ -71,7 +71,8 @@ namespace Demo02.Modules.ModuleName.ViewModels
                 // 最小化窗口
                 case "Minimize":
                     // 定义当前运行的窗口
-                    var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+                    //var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+                    var window = Application.Current.MainWindow;
                     if (window != null)
                     {
                         window.WindowState = WindowState.Minimized;
@@ -95,8 +96,8 @@ namespace Demo02.Modules.ModuleName.ViewModels
         /// </summary>
         private void MaximizeOrNormal()
         {
-            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
-            //var window = Application.Current.MainWindow;
+            //var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            var window = Application.Current.MainWindow;
             if (window != null) 
             {
                 if (window.WindowState == WindowState.Maximized)
