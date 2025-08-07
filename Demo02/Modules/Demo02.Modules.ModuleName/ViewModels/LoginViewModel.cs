@@ -44,7 +44,6 @@ namespace Demo02.Modules.ModuleName.ViewModels
 
         #region 函数
 
-        public LoginViewModel(IContainerExtension container, IRegionManager regionManager) : base(regionManager)
         {
             _container = container;
             _regionManager = regionManager;
@@ -72,9 +71,6 @@ namespace Demo02.Modules.ModuleName.ViewModels
                 {
                     if(Account.Equals("1") && box.Password.Equals("1"))
                     {
-                        //new MainWindow().Show();
-                        var window = _container.Resolve<MainWindow>();
-                        window.Show();
                         Application.Current.MainWindow.Close();
                     }
                     else

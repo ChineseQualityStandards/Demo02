@@ -43,7 +43,6 @@ namespace Demo02.Modules.ModuleName.ViewModels
 
         #region 函数
 
-        public LeftDrawerViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) : base(regionManager)
         {
             
             _regionManager = regionManager;
@@ -77,8 +76,6 @@ namespace Demo02.Modules.ModuleName.ViewModels
         
         public void RegionToView(string viewName)
         {
-            MessageBox.Show(viewName);
-            _regionManager.RequestNavigate(RegionNames.ContentRegion,viewName);
         }
 
         #endregion
