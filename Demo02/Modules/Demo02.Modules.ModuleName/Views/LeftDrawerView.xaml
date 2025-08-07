@@ -11,7 +11,6 @@
     d:DesignWidth="230"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-
     <DockPanel Background="BlanchedAlmond" LastChildFill="False">
         <TextBlock
             HorizontalAlignment="Center"
@@ -49,7 +48,6 @@
             DockPanel.Dock="Top"
             FontFamily="kaiti"
             Text="UID:000000001" />
-
         <StackPanel
             Width="220"
             Margin="5"
@@ -78,5 +76,4 @@
                 FontSize="25" />
         </StackPanel>
     </DockPanel>
-
 </UserControl>

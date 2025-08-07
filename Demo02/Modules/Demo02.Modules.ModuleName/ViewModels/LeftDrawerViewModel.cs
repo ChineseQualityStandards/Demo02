@@ -26,6 +26,7 @@ namespace Demo02.Modules.ModuleName.ViewModels
 
         
 
+
         #endregion
 
         #region 属性
@@ -38,21 +39,15 @@ namespace Demo02.Modules.ModuleName.ViewModels
 
         public DelegateCommand<string> DelegateCommand { get; set; }
 
-
         #endregion
 
         #region 函数
 
-        public LeftDrawerViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) : base(regionManager)
+        public LeftDrawerViewModel(IRegionManager regionManager) : base(regionManager)
         {
-            
             _regionManager = regionManager;
 
             DelegateCommand = new DelegateCommand<string>(DelegateMethod);
-
-            
-
-
         }
 
         private void DelegateMethod(string command)
@@ -71,13 +66,8 @@ namespace Demo02.Modules.ModuleName.ViewModels
             }
         }
 
-
-
-
-        
         public void RegionToView(string viewName)
         {
-            MessageBox.Show(viewName);
             _regionManager.RequestNavigate(RegionNames.ContentRegion,viewName);
         }
 

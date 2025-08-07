@@ -61,17 +61,15 @@ namespace Demo02.Modules.ModuleName.ViewModels
             // 发布事件
             _eventAggregator.GetEvent<DrawerOpenEvent>().Subscribe(OnDrawerOpenChanged);
 
-            
-
         }
         
-
         /// <summary>
         /// 抽屉开关事件的实现
         /// </summary>
         /// <param name="isOpen">抽屉需要达成的状态</param>
         private void OnDrawerOpenChanged(bool isOpen)
         {
+            
             IsLeftDrawerOpen = isOpen;
         }
 

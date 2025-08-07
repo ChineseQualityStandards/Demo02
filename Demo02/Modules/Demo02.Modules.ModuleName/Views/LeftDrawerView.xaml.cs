@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CommonServiceLocator;
+using Demo02.Core;
+using Prism.Commands;
+using Prism.Navigation.Regions;
 
 namespace Demo02.Modules.ModuleName.Views
 {
@@ -20,9 +24,12 @@ namespace Demo02.Modules.ModuleName.Views
     /// </summary>
     public partial class LeftDrawerView : UserControl
     {
+        private IRegionManager RegionManager { get; set; }
+
         public LeftDrawerView()
         {
             InitializeComponent();
+            
         }
     }
 }
