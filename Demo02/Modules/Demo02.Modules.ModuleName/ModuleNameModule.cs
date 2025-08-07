@@ -37,6 +37,7 @@ namespace Demo02.Modules.ModuleName
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<AnnView>();
+            containerRegistry.RegisterForNavigation<BookShelfView>();
             containerRegistry.RegisterForNavigation<HomeView>();
             containerRegistry.RegisterForNavigation<LeftDrawerView>();
             containerRegistry.RegisterForNavigation<LoginView>();

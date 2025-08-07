@@ -11,6 +11,18 @@
     d:DesignWidth="230"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <!--  按钮数据模板  -->
+        <DataTemplate x:Key="NavButtonTemplate">
+            <Button
+                Margin="5"
+                Command="{Binding DataContext.DelegateCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                CommandParameter="{Binding Parameter}"
+                Content="{Binding Title}"
+                FontFamily="kaiti"
+                FontSize="25" />
+        </DataTemplate>
+    </UserControl.Resources>
     <DockPanel Background="BlanchedAlmond" LastChildFill="False">
         <TextBlock
             HorizontalAlignment="Center"
@@ -48,32 +60,17 @@
             DockPanel.Dock="Top"
             FontFamily="kaiti"
             Text="UID:000000001" />
-        <StackPanel
-            Width="220"
-            Margin="5"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Orientation="Vertical">
-            <Button
-                Margin="5"
-                Command="{Binding DelegateCommand}"
-                CommandParameter="HomeView"
-                Content="首页"
-                FontFamily="kaiti"
-                FontSize="25" />
-            <Button
-                Margin="5"
-                Command="{Binding DelegateCommand}"
-                CommandParameter="ViewA"
-                Content="书架"
-                FontFamily="kaiti"
-                FontSize="25" />
-            <Button
-                Margin="5"
-                Command="{Binding DelegateCommand}"
-                Content="内容"
-                FontFamily="kaiti"
-                FontSize="25" />
-        </StackPanel>
+        <ItemsControl ItemTemplate="{StaticResource NavButtonTemplate}" ItemsSource="{Binding NavItems}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel
+                        Width="220"
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </DockPanel>
 </UserControl>
